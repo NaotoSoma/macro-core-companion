@@ -1,0 +1,11 @@
+
+> preview
+> astro preview --host 127.0.0.1 --port 4321
+
+[34m▶ Astro collects anonymous usage data.[39m
+  This information helps us improve Astro.
+  Run "astro telemetry disable" to opt-out.
+  [36m[4mhttps://astro.build/telemetry[24m[39m
+
+[42m[1m astro [22m[49m [32mv6.1.5[39m [2mready in[22m 10 [2mms[22m
+[2m┃[22m Local    [36mhttp://127.0.0.1:4321/[39m

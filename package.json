@@ -1,0 +1,28 @@
+{
+  "name": "macro-core-companion",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "scaffold:lecture": "node ./scripts/scaffold-lecture.mjs",
+    "scaffold:widget": "node ./scripts/scaffold-widget.mjs"
+  },
+  "dependencies": {
+    "@astrojs/react": "latest",
+    "@astrojs/starlight": "latest",
+    "astro": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.8",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "typescript": "latest"
+  }
+}

@@ -1,0 +1,423 @@
+.widget {
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 35%, white);
+  border-radius: 22px;
+  padding: 1rem;
+  margin: 1rem 0 1.5rem;
+  background: color-mix(in srgb, var(--sl-color-bg) 94%, var(--sl-color-white));
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.header p {
+  margin: 0.3rem 0 0;
+  color: color-mix(in srgb, var(--sl-color-text) 70%, white);
+  font-size: 0.95rem;
+}
+
+.resetButton {
+  appearance: none;
+  border: 1px solid color-mix(in srgb, var(--sl-color-text) 18%, white);
+  background: transparent;
+  color: var(--sl-color-text);
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.92rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.resetButton:hover {
+  background: color-mix(in srgb, var(--sl-color-accent) 10%, white);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  margin-bottom: 0.95rem;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  color: color-mix(in srgb, var(--sl-color-text) 78%, white);
+}
+
+.legendSwatch {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.householdSwatch {
+  background: #2563eb;
+}
+
+.firmSwatch {
+  background: #ea580c;
+}
+
+.governmentSwatch {
+  background: #15803d;
+}
+
+.controlsPanel {
+  display: grid;
+  gap: 0.85rem;
+}
+
+@media (min-width: 900px) {
+  .controlsPanel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.fieldset {
+  border: 1px solid color-mix(in srgb, var(--sl-color-text) 14%, white);
+  border-radius: 16px;
+  padding: 0.75rem 0.85rem 0.85rem;
+  min-width: 0;
+}
+
+.fieldset:disabled {
+  opacity: 0.58;
+}
+
+.fieldset legend {
+  padding: 0 0.35rem;
+  font-weight: 600;
+  font-size: 0.93rem;
+}
+
+.choiceGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 0.75rem;
+}
+
+.choiceLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.94rem;
+  cursor: pointer;
+}
+
+.choiceLabel input {
+  margin: 0;
+}
+
+.modeDescription {
+  margin: 0.95rem 0 1rem;
+  font-size: 0.96rem;
+  color: color-mix(in srgb, var(--sl-color-text) 74%, white);
+}
+
+.marketGrid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+@media (min-width: 1100px) {
+  .marketGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.marketPanel {
+  position: relative;
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 24%, white);
+  border-radius: 18px;
+  padding: 0.85rem;
+  background: color-mix(in srgb, var(--sl-color-bg) 96%, var(--sl-color-white));
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.marketPanelFocused {
+  border-color: color-mix(in srgb, var(--sl-color-accent) 52%, white);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--sl-color-accent) 18%, transparent);
+}
+
+.marketPanelDimmed {
+  opacity: 0.62;
+  border-color: color-mix(in srgb, var(--sl-color-text) 12%, white);
+  filter: saturate(0.74);
+}
+
+.marketHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.85rem;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.marketHeader h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.marketHeader p {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--sl-color-text) 72%, white);
+}
+
+.marketMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+  font-size: 0.8rem;
+  color: color-mix(in srgb, var(--sl-color-text) 65%, white);
+}
+
+.givenBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--sl-color-text) 10%, white);
+  color: color-mix(in srgb, var(--sl-color-text) 82%, white);
+  padding: 0.25rem 0.55rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.focusBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--sl-color-accent) 14%, white);
+  color: var(--sl-color-accent-high);
+  padding: 0.25rem 0.55rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.marketSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--sl-color-bg) 99%, var(--sl-color-white)),
+    color-mix(in srgb, var(--sl-color-bg) 94%, var(--sl-color-white))
+  );
+  border-radius: 14px;
+}
+
+.axis {
+  stroke: color-mix(in srgb, var(--sl-color-text) 35%, white);
+  stroke-width: 1.2;
+}
+
+.axisLabelX,
+.axisLabelY {
+  fill: color-mix(in srgb, var(--sl-color-text) 70%, white);
+  font-size: 5.4px;
+  font-weight: 600;
+}
+
+.marketLine {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.householdLine {
+  stroke: #2563eb;
+}
+
+.firmLine {
+  stroke: #ea580c;
+}
+
+.lineLabel {
+  font-size: 4.3px;
+  font-weight: 700;
+  paint-order: stroke;
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-width: 1.6px;
+  stroke-linejoin: round;
+}
+
+.householdLabel {
+  fill: #1d4ed8;
+}
+
+.firmLabel {
+  fill: #c2410c;
+}
+
+.lineNote {
+  font-size: 3.5px;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: rgba(255, 255, 255, 0.92);
+  stroke-width: 1.4px;
+  stroke-linejoin: round;
+}
+
+.governmentLabel {
+  fill: #15803d;
+}
+
+.guideLine {
+  stroke: color-mix(in srgb, var(--sl-color-text) 25%, white);
+  stroke-width: 1;
+  stroke-dasharray: 2.2 2.2;
+}
+
+.equilibriumPoint {
+  fill: color-mix(in srgb, var(--sl-color-text) 88%, black);
+}
+
+.pointLabel {
+  fill: color-mix(in srgb, var(--sl-color-text) 88%, black);
+  font-size: 4.2px;
+  font-weight: 700;
+}
+
+.marketFooter {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.55rem;
+  font-size: 0.78rem;
+  color: color-mix(in srgb, var(--sl-color-text) 68%, white);
+}
+
+.summaryBox {
+  margin-top: 1rem;
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 22%, white);
+  border-radius: 18px;
+  padding: 0.9rem;
+  background: color-mix(in srgb, var(--sl-color-accent) 5%, white);
+}
+
+.summaryTopRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.summaryLead {
+  margin: 0 0 0.75rem;
+  font-weight: 600;
+}
+
+.generalBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--sl-color-accent) 15%, white);
+  color: var(--sl-color-accent-high);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.summaryNote {
+  margin: 0.8rem 0 0;
+  font-size: 0.92rem;
+  color: color-mix(in srgb, var(--sl-color-text) 76%, white);
+}
+
+.summaryCards {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 850px) {
+  .summaryCards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.summaryCard,
+.summaryAside {
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 18%, white);
+  border-radius: 14px;
+  padding: 0.8rem;
+  background: color-mix(in srgb, var(--sl-color-bg) 97%, var(--sl-color-white));
+}
+
+.summaryCard h4,
+.summaryAside strong {
+  margin: 0 0 0.65rem;
+  display: block;
+}
+
+.summaryCard dl {
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.summaryCard dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.summaryCard dt {
+  color: color-mix(in srgb, var(--sl-color-text) 72%, white);
+}
+
+.summaryCard dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.summaryAside p,
+.summaryText,
+.missingText {
+  margin: 0;
+  color: color-mix(in srgb, var(--sl-color-text) 76%, white);
+}
+
+.footerNote {
+  margin-top: 0.95rem;
+  font-size: 0.9rem;
+  color: color-mix(in srgb, var(--sl-color-text) 72%, white);
+}
+
+@media (max-width: 720px) {
+  .widget {
+    padding: 0.85rem;
+  }
+
+  .header,
+  .summaryTopRow,
+  .marketMeta,
+  .marketFooter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .resetButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
