@@ -3,11 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "check": "astro check",
+    "dev": "node ./node_modules/astro/bin/astro.mjs dev",
+    "start": "node ./node_modules/astro/bin/astro.mjs dev",
+    "build": "node ./node_modules/astro/bin/astro.mjs build",
+    "preview": "node ./node_modules/astro/bin/astro.mjs preview",
+    "check": "node ./node_modules/astro/bin/astro.mjs check",
     "scaffold:lecture": "node ./scripts/scaffold-lecture.mjs",
     "scaffold:widget": "node ./scripts/scaffold-widget.mjs"
   },
