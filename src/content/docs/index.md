@@ -10,7 +10,7 @@ sidebar:
 <div class="lecture-note-box">
   <div class="lecture-note-label">Welcome to Week 1</div>
   <p>
-    まずは <a href="/lectures/01-general-equilibrium/">第1回「一般均衡とは何か」</a> から始めると、
+    まずは <a href="/macro-core-companion/lectures/01-general-equilibrium/">第1回「一般均衡とは何か」</a> から始めると、
     このサイト全体で何を「整合的に」考えていくのかをつかみやすくなります。
   </p>
 </div>
@@ -22,21 +22,21 @@ sidebar:
     <div class="home-list-meta">第1回</div>
     <div class="home-list-main">
       <span class="home-tag home-tag-blue">Lecture</span>
-      <a href="/lectures/01-general-equilibrium/">一般均衡とは何か</a>
+      <a href="/macro-core-companion/lectures/01-general-equilibrium/">一般均衡とは何か</a>
     </div>
   </div>
   <div class="home-list-row">
     <div class="home-list-meta">案内</div>
     <div class="home-list-main">
       <span class="home-tag home-tag-purple">Guide</span>
-      <a href="/course-architecture/">コース設計の考え方</a>
+      <a href="/macro-core-companion/course-architecture/">コース設計の考え方</a>
     </div>
   </div>
   <div class="home-list-row">
     <div class="home-list-meta">一覧</div>
     <div class="home-list-main">
       <span class="home-tag home-tag-red">Index</span>
-      <a href="/lectures/">講義ノート一覧</a>
+      <a href="/macro-core-companion/lectures/">講義ノート一覧</a>
     </div>
   </div>
 </div>

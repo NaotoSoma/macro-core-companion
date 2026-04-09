@@ -9,10 +9,10 @@ sidebar:
 
 ## 最初はここから
 
-- [第1回 一般均衡とは何か](/lectures/01-general-equilibrium/)
+- [第1回 一般均衡とは何か](/macro-core-companion/lectures/01-general-equilibrium/)
 
 第1回では、マクロ経済学が個別市場の寄せ集めではなく、複数市場の同時整合性を考える学問であることを確認します。以後の回は、この見取り図のどこを詳しく掘るかという形で積み上げていきます。
 
 ## 公開済み
 
-- [第1回 一般均衡とは何か](/lectures/01-general-equilibrium/)
+- [第1回 一般均衡とは何か](/macro-core-companion/lectures/01-general-equilibrium/)
