@@ -3,6 +3,8 @@ import react from '@astrojs/react';
 import starlight from '@astrojs/starlight';
 
 export default defineConfig({
+  site: 'https://naotosoma.github.io',
+  base: '/macro-core-companion',
   integrations: [
     react(),
     starlight({
@@ -12,7 +14,7 @@ export default defineConfig({
         {
           icon: 'github',
           label: 'GitHub',
-          href: 'https://github.com/your-org/macro-core-companion',
+          href: 'https://github.com/NaotoSoma/macro-core-companion',
         },
       ],
       customCss: ['./src/styles/custom.css'],
