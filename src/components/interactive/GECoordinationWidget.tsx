@@ -69,7 +69,7 @@ const markets: MarketDefinition[] = [
   {
     key: 'goods',
     title: '財市場',
-    subtitle: '家計の財需要と企業の財供給が向き合う市場',
+    subtitle: '家計の財需要と企業の財供給',
     xLabel: '財の量',
     yLabel: '財の価格',
   },
