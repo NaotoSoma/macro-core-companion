@@ -1,0 +1,491 @@
+---
+title: 第2回 家計の選択問題と曲線の導出
+description: 1期間の期内選択、2期間の期間間選択、不確実性下の貯蓄選択を通じて、家計の労働供給曲線と貯蓄供給曲線がどのように現れるかを学ぶ。
+week: 2
+section: core
+estimatedTime: 35-45分
+prerequisites:
+  - 第1回 一般均衡とは何か
+learningGoals:
+  - 家計の最適化問題を、価格を所与とした個別の意思決定問題として説明できる。
+  - 期内選択の FOC から労働供給曲線がどのように導かれるかを説明できる。
+  - 期間間選択の Euler 方程式（オイラー方程式）から貯蓄供給曲線がどのように導かれるかを説明できる。
+  - 将来所得リスクが貯蓄供給曲線をシフトさせうることを説明できる。
+keywords:
+  - 期内選択
+  - 期間間選択
+  - Euler 方程式
+  - 労働供給曲線
+  - 貯蓄供給曲線
+  - 予備的貯蓄
+widgets:
+  - IntratemporalChoiceWidget
+  - IntertemporalChoiceWidget
+  - UncertainSavingWidget
+status: published
+sidebar:
+  label: 第2回 家計の選択問題と曲線の導出
+---
+
+import IntratemporalChoiceWidget from '../../../../components/interactive/IntratemporalChoiceWidget';
+import IntertemporalChoiceWidget from '../../../../components/interactive/IntertemporalChoiceWidget';
+import UncertainSavingWidget from '../../../../components/interactive/UncertainSavingWidget';
+
+<div className="lecture-kicker">Core 02</div>
+
+# 今日の問い
+
+<div className="lecture-question">
+  家計は価格を所与としてどのように最適化し、その結果として<strong>市場で使う需要・供給の曲線</strong>を生み出すのでしょうか。
+</div>
+
+<div className="lecture-goals not-content">
+  <div className="goal-card">
+    <strong>到達目標 1</strong>
+    <p>1期間の家計問題から、労働供給曲線がどのように導かれるかを言葉で説明できるようになる。</p>
+  </div>
+  <div className="goal-card">
+    <strong>到達目標 2</strong>
+    <p>2期間の Euler 方程式（オイラー方程式）が、貯蓄供給曲線を生み出す理由を説明できるようになる。</p>
+  </div>
+  <div className="goal-card">
+    <strong>到達目標 3</strong>
+    <p>不確実性が入ると、曲線の形だけでなく位置そのものが変わりうることを理解する。</p>
+  </div>
+</div>
+
+# 直感
+
+<div className="lecture-note-box">
+  <div className="lecture-note-label">今日の型</div>
+  <p>
+    <strong>経済環境 → 最適化問題 → FOC → 価格ごとの解 → 市場の曲線</strong>
+    という順番を、期間内選択・期間間選択・不確実性下の期間間選択で繰り返します。
+  </p>
+</div>
+
+第1回では、家計・企業・政府の行動を同時に考える一般均衡の見取り図を見ました。今回は、その材料の一つである<strong>家計の供給曲線</strong>を作る回です。
+
+重要なのは、家計の最適化問題が「1回解いて終わり」ではないことです。賃金や利子率といった価格を変えながら同じ問題を解き直すと、労働供給曲線や貯蓄供給曲線が現れます。次回は企業側でも同じことを行い、両者を市場でつなぎます。
+
+# 最小モデル
+
+## 1. 1期間の家計問題: 期内選択
+
+1期間の家計は、消費 $c$ と労働時間 $n$ を選びます。余暇を $l = 1 - n$ と書くと、家計は「どれだけ働いてどれだけ休むか」を同時に決めていると考えられます。
+
+- 選択変数: $c, n$（または $c, l$）
+- 価格: 賃金 $w$
+- 所与の所得: 非労働所得 $T$
+- 目的: 期待効用の最大化
+
+この問題で賃金 $w$ は、余暇 1 単位の機会費用です。1 時間多く休むことは、その分だけ $w$ だけの消費をあきらめることを意味します。
+
+家計の意思決定問題を定式化し、FOC を導出してみましょう。
+
+<details>
+  <summary>導出を開く</summary>
+
+$$
+\begin{aligned}
+\max_{c,n}\quad & u(c, 1-n) \\
+\text{s.t.}\quad & c = wn + T.
+\end{aligned}
+$$
+
+ラグランジアンは
+
+$$
+\mathcal{L} = u(c,1-n) + \lambda(wn + T - c)
+$$
+
+であり、一階条件（FOC）は
+
+$$
+\begin{aligned}
+\frac{\partial \mathcal{L}}{\partial c} &= u_c - \lambda = 0,\\
+\frac{\partial \mathcal{L}}{\partial n} &= -u_l + \lambda w = 0.
+\end{aligned}
+$$
+
+したがって
+
+$$
+\frac{u_l}{u_c} = w
+$$
+</details>
+
+
+
+### FOC とその意味
+
+最適点では、余暇を 1 単位ふやしたい限界的な気持ちと、その余暇を働いて消費に変えたときの限界的な価値が一致します。
+
+- 中心となる条件: $\mathrm{MRS}_{l,c} = w$
+- 読み方: 「余暇と消費の限界代替率が賃金に等しい」
+
+
+
+### 賃金上昇の効果: 代替効果（substitution effect）、所得効果（income effect）、富効果（wealth effect）
+
+賃金が上がると家計の労働供給はどう変わるのでしょうか。この問いに答えるには、予算制約の中で賃金 $w$ が **左辺** と **右辺** の両方に入っていることをはっきり意識するのが重要です。余暇 $l=1-n$ を使うと、予算制約は
+
+$$
+c + wl = w + T
+$$
+
+と書けます。
+
+この式で賃金 $w$ は二つの役割を持っています。
+
+- 左辺の $wl$ は、余暇 1 単位の **価格** を表します。ここでの賃金上昇は、余暇を相対的に高くします。
+- 右辺の $w+T$ は、家計が最初から持っている 1 単位の時間を市場で評価したときの **保有資源の価値** を表します。ここでの賃金上昇は、家計を豊かにします。
+
+したがって、賃金上昇の効果は次のように整理できます。
+
+- **左辺の賃金変化**: 余暇の価格変化であり、これは **代替効果（substitution effect）** と **所得効果（income effect）** に分解されます。
+- **右辺の賃金変化**: 家計の保有資源の価値変化であり、これは **富効果（wealth effect）** として解釈できます。
+
+#### 数式による分解
+
+余暇の Marshallian demand（通常需要）を
+
+$$
+l^M(w,M)
+$$
+
+と書きます。ここで
+
+$$
+M = w + T
+$$
+
+は full income（フルインカム）です。すると、$T$ を固定したまま賃金を変えたときの余暇需要の総効果は
+
+$$
+\frac{dl}{dw}
+=
+\underbrace{\left.\frac{\partial l^M(w,M)}{\partial w}\right|_{M}}_{\text{左辺の賃金変化}}
++
+\underbrace{\frac{\partial l^M(w,M)}{\partial M}\frac{dM}{dw}}_{\text{右辺の賃金変化}}
+$$
+
+と分けられます。ここで $dM/dw=1$ なので、
+
+$$
+\frac{dl}{dw}
+=
+\left.\frac{\partial l^M(w,M)}{\partial w}\right|_{M}
++
+\frac{\partial l^M(w,M)}{\partial M}
+$$
+
+です。
+
+#### 左辺の賃金変化: 代替効果（substitution effect）と所得効果（income effect）
+
+左辺の賃金変化は、full income（フルインカム）$M$ を固定したまま、余暇の価格だけを変える効果です。この効果は Slutsky equation（スルツキー分解）により
+
+$$
+\left.\frac{\partial l^M(w,M)}{\partial w}\right|_{M}
+=
+\underbrace{\frac{\partial l^H(w,\bar u)}{\partial w}}_{\text{代替効果}}
+-
+\underbrace{l\,\frac{\partial l^M(w,M)}{\partial M}}_{\text{所得効果}}
+$$
+
+と書けます。ここで $l^H(w,\bar u)$ は Hicksian demand（補償需要）です。
+
+労働供給 $n=1-l$ で書き直すと、
+
+$$
+\left.\frac{\partial n}{\partial w}\right|_{M}
+=
+-\left.\frac{\partial l^M(w,M)}{\partial w}\right|_{M}
+=
+\underbrace{-\frac{\partial l^H(w,\bar u)}{\partial w}}_{\text{代替効果（substitution effect）}}
++
+\underbrace{l\,\frac{\partial l^M(w,M)}{\partial M}}_{\text{所得効果（income effect）}}
+$$
+
+です。
+
+この式の意味は次の通りです。
+
+- **代替効果（substitution effect）**  
+  賃金が上がると余暇は相対的に高くなるので、余暇を減らして労働を増やす方向に働きます。
+- **所得効果（income effect）**  
+  左辺の価格変化だけを見ると、余暇が高くなったことで実質購買力が下がります。余暇が normal good（正常財）なら、家計は余暇を減らして労働を増やそうとします。
+
+したがって、**左辺の賃金変化だけを見れば、代替効果（substitution effect）も所得効果（income effect）も、ともに労働を増やす方向に働きます。**
+
+#### 右辺の賃金変化: 富効果（wealth effect）
+
+一方、右辺の賃金変化は、家計が最初から持っている 1 単位の時間の価値を高めます。これは価格を固定したまま家計の保有資源の価値だけを上げる方向の効果であり、富効果（wealth effect）として解釈できます。
+
+労働供給への効果は
+
+$$
+\frac{\partial n}{\partial M}\frac{dM}{dw}
+=
+\underbrace{-\frac{\partial l^M(w,M)}{\partial M}}_{\text{富効果（wealth effect）}}
+$$
+
+です。余暇が normal good（正常財）なら
+
+$$
+\frac{\partial l^M(w,M)}{\partial M} > 0
+$$
+
+なので、富効果（wealth effect）は **余暇を増やし、労働を減らす方向** に働きます。
+
+なお、非労働所得 $T$ の変化も、価格を固定したまま full income（フルインカム）だけを動かすので、
+
+$$
+\frac{dn}{dT}
+=
+-\frac{\partial l^M(w,M)}{\partial M}
+$$
+
+となり、これは純粋な富効果（wealth effect）です。
+
+#### 総効果
+
+以上をまとめると、賃金変化に対する労働供給の総効果は
+
+$$
+\frac{dn}{dw}
+=
+\underbrace{-\frac{\partial l^H(w,\bar u)}{\partial w}}_{\text{代替効果（substitution effect）}}
++
+\underbrace{l\,\frac{\partial l^M(w,M)}{\partial M}}_{\text{所得効果（income effect）}}
++
+\underbrace{\left(-\frac{\partial l^M(w,M)}{\partial M}\right)}_{\text{富効果（wealth effect）}}
+$$
+
+であり、整理すると
+
+$$
+\frac{dn}{dw}
+=
+-\frac{\partial l^H(w,\bar u)}{\partial w}
+-
+(1-l)\frac{\partial l^M(w,M)}{\partial M}
+=
+-\frac{\partial l^H(w,\bar u)}{\partial w}
+-
+n\frac{\partial l^M(w,M)}{\partial M}
+$$
+
+となります。
+
+したがって、賃金上昇が最終的に労働供給を増やすか減らすかは、
+
+- 左辺で働く **代替効果（substitution effect）**
+- 左辺で働く **所得効果（income effect）**
+- 右辺で働く **富効果（wealth effect）**
+
+のどれが強いかによって決まります。
+
+
+### FOC からどの曲線が出るか
+
+この条件は、「与えられた賃金のもとで家計が何時間働くか」を決める条件です。したがって、賃金 $w$ を少しずつ変えながら最適な $n$ を解き直すと、家計の<strong>労働供給曲線</strong>が得られます。
+
+<IntratemporalChoiceWidget client:load />
+
+期内選択では、賃金が余暇の機会費用になります。家計の最適点を賃金ごとに並べ直したものが、労働市場で使う労働供給曲線です。
+
+
+## 2. 2期間の家計問題: 期間間選択
+
+次に、家計が今日の消費 $c_1$ と明日の消費 $c_2$ をどう配分するかを考えます。家計は第1期に貯蓄もしくは借り入れ $a$ を決め、その貯蓄もしくは借入が第2期に粗利子率 $1+r$ の利子付きで返ってくる権利もしくは返さなければならない義務として発生します。
+この問題で利子率 $r$ は、「今日の消費 1 単位を先送りすると、明日どれだけ多く消費できるか」を表す期間間の相対価格です。
+
+- 選択変数: ?
+- 価格: ?
+- 所与の所得: $y_1, y_2$
+- 目的: 効用の最大化
+
+家計の意思決定問題を定式化し、FOC を導出してみましょう。
+
+<details>
+  <summary>導出を開く</summary>
+
+$$
+\begin{aligned}
+\max_{c_1,c_2,a}\quad & u(c_1) + \beta u(c_2) \\
+\text{s.t.}\quad & c_1 + a = y_1,\\
+& c_2 = y_2 + (1+r)a.
+\end{aligned}
+$$
+
+$a$ について微分すると
+
+$$
+-u'(c_1) + \beta(1+r)u'(c_2) = 0
+$$
+
+したがって
+
+$$u'(c_1) = \beta(1+r)u'(c_2)
+$$
+</details>
+
+### FOC とその意味
+
+最適点では、今日の消費を 1 単位減らしたときの限界的な損失と、その分だけ貯蓄して明日の消費を増やしたときの限界的な利得が一致します。
+
+- 中心となる条件: $u'(c_1) = \beta(1+r)u'(c_2)$
+- 読み方: 「今日の限界効用が、割引された明日の限界効用に一致する」
+
+
+
+### FOC からどの曲線が出るか
+
+この条件は、与えられた利子率のもとで家計がどれだけ貯蓄するかを決める条件です。そこで、利子率 $r$ を少しずつ変えながら最適な貯蓄 $a$ を解き直すと、資産市場で使う<strong>貯蓄供給曲線</strong>が得られます。
+
+<IntertemporalChoiceWidget client:load />
+
+期間間選択では、利子率が今日と明日の消費の相対価格になります。Euler 方程式（オイラー方程式）を利子率ごとに解き直したものが、家計の貯蓄供給曲線です。
+
+
+
+## 3. 不確実性下の 2 期間問題
+
+最後に、第2期の所得が不確実な場合を考えます。第2期には良い状態（good state）と悪い状態（bad state）があり、どちらになるかは家計には第1期の時点ではわかりません。
+家計は第1期に安全資産での貯蓄 $a$ を選ぶとします。ここでは話を簡単にするために、<strong>借り入れはできない</strong>、すなわち $a \ge 0$ とします。
+
+- 選択変数: ?
+- 価格: ?
+- 所与の所得: $y_1, y_2(s)$
+- 借入制約: $a \ge 0$
+- 状態: $s \in \{\mathrm{good}, \mathrm{bad}\}$
+- 目的: 期待効用の最大化
+
+ここで家計は、単に「平均的にどれくらい消費できるか」だけではなく、悪い状態（bad state）で消費がどこまで落ちるかも気にします。さらに、借り入れができないため、本当は借りたい家計でも、その選択は許されません。
+
+家計の意思決定問題を定式化し、FOC を導出してみましょう。
+
+<details>
+  <summary>導出を開く</summary>
+
+$$
+\begin{aligned}
+\max_{c_1,\{c_2(s)\},a}\quad & u(c_1) + \beta E[u(c_2(s))] \\
+\text{s.t.}\quad & c_1 + a = y_1,\\
+& c_2(s) = y_2(s) + (1+r)a,\\
+& a \ge 0.
+\end{aligned}
+$$
+
+不等式制約があるので、KKT 条件（Karush-Kuhn-Tucker conditions）を使います。資産制約 $a \ge 0$ に対応する乗数を $\mu \ge 0$ とすると、ラグランジアンは
+
+$$
+\mathcal{L}
+= u(c_1) + \beta E[u(c_2(s))] + \lambda(y_1-c_1-a) + \mu a
+$$
+
+です。$c_1$ と $a$ についての条件は
+
+$$
+\begin{aligned}
+\frac{\partial \mathcal{L}}{\partial c_1} &= u'(c_1)-\lambda = 0,\\
+\frac{\partial \mathcal{L}}{\partial a} &= -\lambda + \beta(1+r)E[u'(c_2(s))] + \mu = 0.
+\end{aligned}
+$$
+
+これらを組み合わせると
+
+$$u'(c_1) = \beta(1+r)E[u'(c_2(s))] + \mu
+$$
+
+となり、$\mu \ge 0$ なので
+
+$$u'(c_1) \ge \beta(1+r)E[u'(c_2(s))]
+$$
+
+です。さらに、KKT 条件（Karush-Kuhn-Tucker conditions）では
+
+$$
+a \ge 0, \qquad \mu \ge 0, \qquad \mu a = 0
+$$
+
+が必要です。したがって、最適化条件はまとめて
+
+$$u'(c_1) \ge \beta(1+r)E[u'(c_2(s))],
+\qquad a \ge 0,
+\qquad \bigl[u'(c_1)-\beta(1+r)E[u'(c_2(s))]\bigr]a = 0
+$$
+
+と書けます。
+</details>
+
+### KKT 条件（Karush-Kuhn-Tucker conditions）とその意味
+
+不確実性が入ると、右辺は単なる将来の限界効用ではなく、<strong>将来の限界効用の期待値</strong>になります。さらに借入制約 $a \ge 0$ があるので、条件は等号ではなく<strong>期待 Euler 不等式</strong>になります。
+
+- 中心となる条件:
+  $$
+  u'(c_1) \ge \beta(1+r)E[u'(c_2(s))],
+  \qquad a \ge 0,
+  \qquad \bigl[u'(c_1)-\beta(1+r)E[u'(c_2(s))]\bigr]a = 0
+  $$
+- 読み方:
+  「正の貯蓄をしているときは期待 Euler 方程式（期待オイラー方程式）の等号が成り立つ。借入制約が有効なときは、家計は本当は借りたいが借りられないので、今日の限界効用が右辺を上回る」
+
+#### KKT 条件（Karush-Kuhn-Tucker conditions）の直感
+
+無制約なら、家計は貯蓄 $a$ を少し増やすか減らすかを自由に選べるので、最適点では傾きがちょうど 0 になり、期待 Euler 方程式（期待オイラー方程式）の<strong>等号</strong>が成り立ちます。
+
+しかし今回は $a \ge 0$ なので、左に動いて借り入れに入ることはできません。もし無制約なら最適点が $a<0$ にあるはずだったとしても、実際にはそこへ行けないので、最適点は境界の $a=0$ に張り付きます。このときは、$a=0$ から右へ少し動くと効用が下がり、左へ動くと効用は上がるかもしれないが、その方向は実行不可能です。だから最適化条件は等号ではなく
+
+$$u'(c_1) > \beta(1+r)E[u'(c_2(s))]
+$$
+
+という<strong>不等号</strong>になりえます。これが「借りたいのに借りられない」家計の特徴です。
+
+### KKT 条件（Karush-Kuhn-Tucker conditions）からどの曲線が出るか
+
+この問題でも、利子率ごとに最適な貯蓄 $a$ を解き直すと、資産市場で使う貯蓄供給曲線が得られます。ただし今回は、借入制約 $a \ge 0$ があるので、曲線は必ずしも滑らかな一本の線にはなりません。
+
+- 無制約なら負の貯蓄を選んでいた家計は、制約のもとでは $a=0$ に張り付く
+- したがって、貯蓄供給曲線は $a=0$ で折れ曲がったり、そこにとどまったりしうる
+- リスクが高まると、その境界から正の貯蓄へ押し出されることがある
+
+この「境界に張り付く」動きも、不確実性下の家計行動の重要な含意です。
+
+<UncertainSavingWidget client:load />
+
+
+借入制約 $a \ge 0$ があると、家計は本当は借りたい状況でも $a=0$ から左へ動けません。そのとき期待 Euler 方程式（期待オイラー方程式）は等号ではなく不等号になり、貯蓄供給曲線はゼロのところで折れ曲がることがあります。リスクの上昇は、その境界にいた家計を正の貯蓄へ押し出し、予備的貯蓄を強めることがあります。
+
+
+
+# データで確かめる
+
+この回のモデルは非常に小さいものですが、次のようなデータを見るときの見方を与えてくれます。
+
+1. 労働時間と実質賃金がどう結び付いているか。
+2. 家計貯蓄率と利子率がどう結び付いているか。
+3. 将来不安が強い局面で、家計がどれだけ予備的に貯蓄を増やすか。
+
+この時点では、モデルの含意を厳密にデータでテストするというより、「どの系列を見れば、どの選択問題の痕跡が見えそうか」を確認することが重要です。
+
+# 演習
+
+1. 期内選択において、賃金が変化したときの家計の行動の変化を数式と言葉と図でそれぞれ説明してください。
+2. 期間間選択において、利子率が変化したときの家計の行動の変化を数式と言葉と図でそれぞれ説明してください。
+3. 将来所得の平均が同じでも、不確実性が増えると貯蓄が増える可能性があるのはなぜですか。
+
+# 一般化への橋渡し
+
+| 問題 | 相対価格 | 中心的な FOC | 導かれる曲線 |
+| --- | --- | --- | --- |
+| 1期間の消費・労働選択 | 賃金 $w$ | $\mathrm{MRS}_{l,c} = w$ | 労働供給曲線 |
+| 2期間の消費・貯蓄選択 | 利子率 $r$ | $u'(c_1) = \beta(1+r)u'(c_2)$ | 貯蓄供給曲線 |
+| 不確実性下の貯蓄選択 | 利子率 $r$ とリスク | 期待 Euler 不等式 + $a \ge 0$ | シフトしうる制約付き貯蓄供給曲線 |
+
+ここで見えてきた共通点は、どの問題でも「価格を所与として最適化した結果が、価格ごとの曲線として表現できる」ということです。第1回で見た市場図の線は、まさにこのようにして作られます。
+
+次回は同じことを企業について行い、労働需要、資金需要、財供給がどのように現れるかを考えます。そのうえで初めて、第1回で見た「家計の線」と「企業の線」を市場で本格的に接続できます。

@@ -1,10 +1,16 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import starlight from '@astrojs/starlight';
+import rehypeKatex from 'rehype-katex';
+import remarkMath from 'remark-math';
 
 export default defineConfig({
   site: 'https://naotosoma.github.io',
   base: '/macro-core-companion',
+  markdown: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex],
+  },
   integrations: [
     react(),
     starlight({
@@ -25,7 +31,7 @@ export default defineConfig({
         },
         {
           label: '講義ノート',
-          items: ['lectures', 'lectures/01-general-equilibrium'],
+          items: ['lectures', 'lectures/01-general-equilibrium', 'lectures/02-household-choice'],
         },
       ],
     }),

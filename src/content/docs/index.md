@@ -26,6 +26,13 @@ sidebar:
     </div>
   </div>
   <div class="home-list-row">
+    <div class="home-list-meta">第2回</div>
+    <div class="home-list-main">
+      <span class="home-tag home-tag-green">Lecture</span>
+      <a href="/macro-core-companion/lectures/02-household-choice/">家計の選択問題と曲線の導出</a>
+    </div>
+  </div>
+  <div class="home-list-row">
     <div class="home-list-meta">案内</div>
     <div class="home-list-main">
       <span class="home-tag home-tag-purple">Guide</span>

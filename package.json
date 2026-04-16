@@ -15,8 +15,11 @@
     "@astrojs/react": "latest",
     "@astrojs/starlight": "latest",
     "astro": "latest",
+    "katex": "^0.16.45",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",

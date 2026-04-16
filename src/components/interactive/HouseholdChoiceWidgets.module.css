@@ -1,0 +1,471 @@
+.widget {
+  --household-blue: #2563eb;
+  --household-blue-soft: color-mix(in srgb, var(--household-blue) 12%, var(--sl-color-bg));
+  --household-orange: #ea580c;
+  --household-green: #16a34a;
+  --household-red: #dc2626;
+  --household-border: color-mix(in srgb, var(--sl-color-gray-5) 70%, var(--sl-color-text) 12%);
+  --household-muted: color-mix(in srgb, var(--sl-color-text) 68%, var(--sl-color-bg));
+  --household-panel: color-mix(in srgb, var(--sl-color-bg) 92%, var(--sl-color-accent-low) 8%);
+  border: 1px solid var(--household-border);
+  border-radius: 0;
+  padding: clamp(1rem, 2.5vw, 1.4rem);
+  background: var(--sl-color-bg);
+  box-shadow: 0 14px 38px color-mix(in srgb, var(--sl-color-text) 8%, transparent);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.header h3 {
+  margin: 0;
+  color: var(--sl-color-white);
+  font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+  line-height: 1.35;
+}
+
+.header p {
+  margin: 0.45rem 0 0;
+  color: var(--household-muted);
+  line-height: 1.75;
+}
+
+.badge {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 0.32rem 0.62rem;
+  background: var(--household-blue-soft);
+  color: color-mix(in srgb, var(--household-blue) 78%, var(--sl-color-text));
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.controlsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 1rem 0;
+}
+
+.fieldset {
+  min-width: 0;
+  border: 1px solid var(--household-border);
+  border-radius: 0;
+  padding: 0.85rem;
+  background: var(--household-panel);
+}
+
+.fieldset legend {
+  padding: 0 0.35rem;
+  color: var(--sl-color-white);
+  font-weight: 800;
+}
+
+.sliderStack {
+  display: grid;
+  gap: 0.78rem;
+}
+
+.sliderRow {
+  display: grid;
+  gap: 0.32rem;
+}
+
+.sliderLabel {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.8rem;
+  color: var(--household-muted);
+  font-size: 0.92rem;
+}
+
+.sliderValue {
+  border-radius: 0;
+  padding: 0.08rem 0.42rem;
+  background: color-mix(in srgb, var(--household-blue) 9%, var(--sl-color-bg));
+  color: var(--sl-color-white);
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+
+.sliderRow input[type='range'] {
+  width: 100%;
+  accent-color: var(--household-blue);
+}
+
+.choiceGroup {
+  display: grid;
+  gap: 0.58rem;
+}
+
+.choiceLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--household-muted);
+}
+
+.choiceLabel input {
+  accent-color: var(--household-blue);
+}
+
+.smallNote,
+.note {
+  margin: 0.75rem 0 0;
+  color: var(--household-muted);
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+.mathInline {
+  display: inline-block;
+  margin-inline: 0.08em;
+  line-height: 1;
+  vertical-align: -0.08em;
+}
+
+.presetButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+}
+
+.presetButton {
+  border: 1px solid color-mix(in srgb, var(--household-blue) 55%, var(--household-border));
+  border-radius: 0;
+  padding: 0.32rem 0.58rem;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.presetButton:hover,
+.presetButton:focus-visible {
+  background: color-mix(in srgb, var(--household-blue) 10%, var(--sl-color-bg));
+  color: var(--sl-color-white);
+}
+
+.chartGrid2,
+.chartGrid3 {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.chartGrid2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.chartGrid3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.chartPanel {
+  min-width: 0;
+  border: 1px solid var(--household-border);
+  border-radius: 0;
+  padding: 0.95rem;
+  background: var(--household-panel);
+}
+
+.chartPanel h4 {
+  margin: 0;
+  color: var(--sl-color-white);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.chartPanel p {
+  margin: 0.35rem 0 0.72rem;
+  color: var(--household-muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.chartSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 220px;
+  border: 1px solid color-mix(in srgb, var(--household-border) 70%, transparent);
+  background: color-mix(in srgb, var(--sl-color-bg) 96%, var(--sl-color-accent-low) 4%);
+}
+
+.axis {
+  stroke: color-mix(in srgb, var(--sl-color-text) 42%, var(--sl-color-bg));
+  stroke-width: 1.25;
+  vector-effect: non-scaling-stroke;
+}
+
+.axisLabel,
+.pointLabel,
+.barLabel {
+  fill: var(--household-muted);
+  font-size: 4.4px;
+  font-weight: 700;
+}
+
+.pointLabel {
+  fill: var(--sl-color-white);
+}
+
+.borrowingRegion {
+  fill: color-mix(in srgb, var(--household-orange) 11%, transparent);
+}
+
+.primaryCurve,
+.secondaryCurve,
+.tertiaryCurve,
+.constraintLine,
+.guideCurve,
+.cornerSupplyCurve,
+.budgetIncomeGuide,
+.endowmentGuide,
+.zeroAxis {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.primaryCurve {
+  stroke: var(--household-blue);
+  stroke-width: 2.2;
+}
+
+.secondaryCurve {
+  stroke: var(--household-orange);
+  stroke-width: 2;
+}
+
+.tertiaryCurve {
+  stroke: var(--household-green);
+  stroke-width: 1.45;
+  opacity: 0.72;
+}
+
+.constraintLine {
+  stroke: color-mix(in srgb, var(--sl-color-text) 70%, var(--sl-color-bg));
+  stroke-width: 1.8;
+}
+
+.guideCurve {
+  stroke: #93c5fd;
+  stroke-dasharray: 3 2;
+  stroke-width: 1.8;
+}
+
+.cornerSupplyCurve {
+  stroke: var(--household-orange);
+  stroke-dasharray: 2.5 2.5;
+  stroke-width: 1.7;
+}
+
+.zeroAxis {
+  stroke: color-mix(in srgb, var(--sl-color-text) 38%, var(--sl-color-bg));
+  stroke-dasharray: 2.5 2.5;
+  stroke-width: 1;
+}
+
+.budgetIncomeGuide {
+  stroke: color-mix(in srgb, var(--sl-color-text) 52%, var(--sl-color-bg));
+  stroke-dasharray: 2 2;
+  stroke-width: 1.15;
+}
+
+.endowmentGuide {
+  stroke: color-mix(in srgb, var(--household-green) 60%, var(--sl-color-text));
+  stroke-dasharray: 2 2;
+  stroke-width: 1.05;
+}
+
+.currentPoint,
+.currentPointAlt,
+.budgetEndpoint,
+.endowmentPoint {
+  stroke: var(--sl-color-bg);
+  stroke-width: 0.85;
+  vector-effect: non-scaling-stroke;
+}
+
+.currentPoint {
+  fill: var(--household-orange);
+}
+
+.currentPointAlt {
+  fill: var(--household-blue);
+}
+
+.budgetEndpoint {
+  fill: color-mix(in srgb, var(--sl-color-text) 88%, var(--sl-color-bg));
+}
+
+.endowmentPoint {
+  fill: var(--household-green);
+}
+
+.barGood,
+.barBad {
+  stroke: color-mix(in srgb, var(--sl-color-bg) 80%, transparent);
+  stroke-width: 0.6;
+  vector-effect: non-scaling-stroke;
+}
+
+.barGood {
+  fill: var(--household-blue);
+}
+
+.barBad {
+  fill: var(--household-orange);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.85rem;
+  margin-top: 0.72rem;
+  color: var(--household-muted);
+  font-size: 0.82rem;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.legendLine {
+  display: inline-block;
+  width: 1.35rem;
+  height: 0.18rem;
+  border-radius: 999px;
+}
+
+.legendDot {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+}
+
+.legendBar {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 0;
+}
+
+.primarySwatch {
+  background: var(--household-blue);
+}
+
+.secondarySwatch {
+  background: var(--household-orange);
+}
+
+.tertiarySwatch {
+  background: var(--household-green);
+}
+
+.summaryBox {
+  border: 1px solid var(--household-border);
+  border-left: 5px solid var(--household-blue);
+  border-radius: 0;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--household-blue) 7%, var(--sl-color-bg));
+}
+
+.summaryLead {
+  margin: 0 0 0.85rem;
+  color: var(--sl-color-white);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.7;
+}
+
+.metricGrid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.metricGrid3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.metricCard {
+  min-width: 0;
+  border: 1px solid var(--household-border);
+  border-radius: 0;
+  padding: 0.78rem;
+  background: var(--sl-color-bg);
+}
+
+.metricCard h4 {
+  margin: 0 0 0.55rem;
+  color: var(--sl-color-white);
+  font-size: 0.94rem;
+}
+
+.metricCard dl,
+.metricCard div {
+  margin: 0;
+}
+
+.metricCard dl {
+  display: grid;
+  gap: 0.32rem;
+}
+
+.metricCard div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.metricCard dt {
+  color: var(--household-muted);
+  font-size: 0.86rem;
+}
+
+.metricCard dd {
+  color: var(--sl-color-white);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 1050px) {
+  .chartGrid3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .header,
+  .controlsGrid,
+  .chartGrid2,
+  .metricGrid3 {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    display: grid;
+  }
+
+  .badge {
+    justify-self: start;
+  }
+}

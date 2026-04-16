@@ -1,3 +1,5 @@
+@import 'katex/dist/katex.min.css';
+
 :root,
 :root[data-theme='light'] {
   --ynu-blue: #3f6ff6;
@@ -254,6 +256,10 @@ body {
 
 .home-tag-blue {
   background: var(--ynu-blue);
+}
+
+.home-tag-green {
+  background: var(--brand-green);
 }
 
 .home-tag-purple {

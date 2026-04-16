@@ -16,3 +16,4 @@ sidebar:
 ## 公開済み
 
 - [第1回 一般均衡とは何か](/macro-core-companion/lectures/01-general-equilibrium/)
+- [第2回 家計の選択問題と曲線の導出](/macro-core-companion/lectures/02-household-choice/)
