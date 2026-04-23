@@ -167,13 +167,14 @@ export default function UncertainSavingWidget() {
   const unconstrainedVisibleX = borrowingConstraintBinds ? eulerScaleX(unconstrainedSolution.saving) : null;
 
   return (
-    <section className={`${styles.widget} not-content`} aria-label="不確実性下の消費貯蓄選択と借入制約">
+    <section className={`${styles.widget} not-content`} aria-label="不確実性下の2期間家計と借入制約">
       <header className={styles.header}>
         <div>
-          <h3>不確実性下の 2 期間問題: 借入制約つきの期待 Euler 条件</h3>
+          <h3>不確実性下の 2 期間家計: 借入制約と Euler 条件</h3>
           <p>
-            借入制約 <MathInline math="a \ge 0" /> があると、無制約なら借り入れを選ぶ家計でも、最適点は境界
-            <MathInline math="a=0" /> に張り付きます。そのとき期待 Euler 方程式（期待オイラー方程式）は等号ではなく不等号になります。
+            借入制約 <MathInline math="a \ge 0" /> があると、無制約なら借入を選びたい場合でも
+            実際の選択は <MathInline math="a=0" /> に張りつくことがあります。そのとき内部解で成り立つ
+            Euler 条件は等号ではなく不等号として現れます。
           </p>
         </div>
         <span className={styles.badge}>借入制約あり</span>
@@ -199,7 +200,7 @@ export default function UncertainSavingWidget() {
             </label>
             <label className={styles.sliderRow}>
               <span className={styles.sliderLabel}>
-                <span>リスク水準</span>
+                <span>リスク幅</span>
                 <span className={styles.sliderValue}>{formatNumber(risk)}</span>
               </span>
               <input type="range" min="0.06" max="0.45" step="0.01" value={risk} onChange={(event) => setRisk(Number(event.target.value))} />
@@ -226,14 +227,14 @@ export default function UncertainSavingWidget() {
             </label>
             <label className={styles.sliderRow}>
               <span className={styles.sliderLabel}>
-                <span>危険回避度 <MathInline math="\sigma" /></span>
+                <span>相対的危険回避度 <MathInline math="\sigma" /></span>
                 <span className={styles.sliderValue}>{formatNumber(sigma)}</span>
               </span>
               <input type="range" min="1" max="4" step="0.05" value={sigma} onChange={(event) => setSigma(Number(event.target.value))} />
             </label>
           </div>
           <p className={styles.smallNote}>
-            平均的な第2期所得は一定（<MathInline math={`E[y_2]=${formatNumber(meanIncome)}`} />）に保ち、リスクだけを動かしています。負の貯蓄は許していません。
+            平均的な第2期所得は <MathInline math={`E[y_2]=${formatNumber(meanIncome)}`} /> に固定し、リスク幅だけを動かしています。
           </p>
         </fieldset>
       </div>
@@ -241,7 +242,7 @@ export default function UncertainSavingWidget() {
       <div className={styles.chartGrid3}>
         <article className={styles.chartPanel}>
           <h4>状態別の第2期消費</h4>
-          <p>最適貯蓄のもとで、良い状態（good state）と悪い状態（bad state）で明日の消費がどう分かれるかを見ます。</p>
+          <p>最適な貯蓄のもとで、第2期消費が good state と bad state でどう分かれるかを見ます。</p>
           <svg className={styles.chartSvg} viewBox={`0 0 ${plot.width} ${plot.height}`} role="img" aria-label="状態別の第2期消費">
             <line className={styles.axis} x1={plot.marginLeft} y1={plot.height - plot.marginBottom} x2={plot.width - plot.marginRight} y2={plot.height - plot.marginBottom} />
             <line className={styles.axis} x1={plot.marginLeft} y1={plot.height - plot.marginBottom} x2={plot.marginLeft} y2={plot.marginTop} />
@@ -257,22 +258,23 @@ export default function UncertainSavingWidget() {
           <div className={styles.legend} aria-hidden="true">
             <span className={styles.legendItem}>
               <span className={`${styles.legendBar} ${styles.primarySwatch}`} />
-              良い状態（good state）
+              good state
             </span>
             <span className={styles.legendItem}>
               <span className={`${styles.legendBar} ${styles.secondarySwatch}`} />
-              悪い状態（bad state）
+              bad state
             </span>
           </div>
         </article>
 
         <article className={styles.chartPanel}>
-          <h4>期待 Euler 条件と借入制約</h4>
+          <h4>Euler 条件と借入制約</h4>
           <p>
-            交点が <MathInline math="a=0" /> の右にあれば内部解です。交点が左の借入領域にあるときは、実際の最適点は境界
-            <MathInline math="a=0" /> になり、期待 Euler 不等式（期待オイラー不等式）が成り立ちます。
+            左辺 <MathInline math="u'(c_1)" /> と右辺 <MathInline math="\beta(1+r)E[u'(c_2)]" /> を比べています。
+            無制約なら 2 本の線が交わる点が最適ですが、借入制約が binding すると実際の選択は
+            <MathInline math="a=0" /> に移り、無制約最適点は緑で示されます。
           </p>
-          <svg className={styles.chartSvg} viewBox={`0 0 ${plot.width} ${plot.height}`} role="img" aria-label="期待 Euler 条件と借入制約の図">
+          <svg className={styles.chartSvg} viewBox={`0 0 ${plot.width} ${plot.height}`} role="img" aria-label="Euler 条件と借入制約">
             <line className={styles.axis} x1={plot.marginLeft} y1={plot.height - plot.marginBottom} x2={plot.width - plot.marginRight} y2={plot.height - plot.marginBottom} />
             <line className={styles.axis} x1={plot.marginLeft} y1={plot.height - plot.marginBottom} x2={plot.marginLeft} y2={plot.marginTop} />
             <text className={styles.axisLabel} x={plot.marginLeft + plotWidth / 2} y={plot.height - 3}>貯蓄 a</text>
@@ -292,17 +294,17 @@ export default function UncertainSavingWidget() {
             <line className={styles.zeroAxis} x1={zeroEulerX} y1={plot.height - plot.marginBottom} x2={zeroEulerX} y2={plot.marginTop} />
             <text className={styles.pointLabel} x={zeroEulerX + 1.8} y={plot.marginTop + 6}>a = 0</text>
             {borrowingConstraintBinds && unconstrainedVisibleX !== null ? (
-              <>
-                <circle className={styles.currentPoint} cx={unconstrainedVisibleX} cy={eulerScaleY(marginalUtility(unconstrainedSolution.c1, sigma))} r="1.9" />
-                <text className={styles.pointLabel} x={unconstrainedVisibleX + 2} y={eulerScaleY(marginalUtility(unconstrainedSolution.c1, sigma)) - 3}>
-                  無制約ならここ
-                </text>
-              </>
+              <circle
+                className={styles.unconstrainedPoint}
+                cx={unconstrainedVisibleX}
+                cy={eulerScaleY(marginalUtility(unconstrainedSolution.c1, sigma))}
+                r="2.15"
+              />
             ) : null}
             <line className={styles.zeroAxis} x1={eulerScaleX(solution.saving)} y1={plot.height - plot.marginBottom} x2={eulerScaleX(solution.saving)} y2={eulerScaleY(currentLhs)} />
             <circle className={styles.currentPointAlt} cx={eulerScaleX(solution.saving)} cy={eulerScaleY(currentLhs)} r="2.35" />
             <text className={styles.pointLabel} x={eulerScaleX(solution.saving) + 2.3} y={eulerScaleY(currentLhs) - 3}>
-              {borrowingConstraintBinds ? '境界解 a*=0' : '最適 a*'}
+              {borrowingConstraintBinds ? '制約下で a*=0' : '最適 a*'}
             </text>
           </svg>
           <div className={styles.legend} aria-hidden="true">
@@ -324,9 +326,12 @@ export default function UncertainSavingWidget() {
         </article>
 
         <article className={styles.chartPanel}>
-          <h4>市場空間: リスクで動く貯蓄供給</h4>
-          <p>低リスクと現在のリスクを比べると、同じ利子率でも望ましい貯蓄量が変わります。借入制約があるので、曲線は <MathInline math="a=0" /> に張り付くことがあります。</p>
-          <svg className={styles.chartSvg} viewBox={`0 0 ${plot.width} ${plot.height}`} role="img" aria-label="リスクでシフトする貯蓄供給曲線">
+          <h4>リスクで動く貯蓄供給</h4>
+          <p>
+            リスクが小さい場合と現在のリスクを比べると、precautionary saving が増えるときに
+            貯蓄供給曲線がどう動くかを確認できます。借入制約があると <MathInline math="a=0" /> に張りつくことがあります。
+          </p>
+          <svg className={styles.chartSvg} viewBox={`0 0 ${plot.width} ${plot.height}`} role="img" aria-label="リスクで動く貯蓄供給">
             <line className={styles.axis} x1={plot.marginLeft} y1={plot.height - plot.marginBottom} x2={plot.width - plot.marginRight} y2={plot.height - plot.marginBottom} />
             <line className={styles.axis} x1={plot.marginLeft} y1={plot.height - plot.marginBottom} x2={plot.marginLeft} y2={plot.marginTop} />
             <text className={styles.axisLabel} x={plot.marginLeft + plotWidth / 2} y={plot.height - 3}>貯蓄 a</text>
@@ -334,7 +339,7 @@ export default function UncertainSavingWidget() {
             <path className={styles.guideCurve} d={supplyPathLow} />
             <path className={styles.primaryCurve} d={supplyPathHigh} />
             <line className={styles.zeroAxis} x1={zeroSavingX} y1={plot.height - plot.marginBottom} x2={zeroSavingX} y2={plot.marginTop} />
-            <text className={styles.pointLabel} x={zeroSavingX + 1.8} y={plot.marginTop + 6}>借入不可</text>
+            <text className={styles.pointLabel} x={zeroSavingX + 1.8} y={plot.marginTop + 6}>借入なし</text>
             <line className={styles.zeroAxis} x1={savingScaleX(solution.saving)} y1={plot.height - plot.marginBottom} x2={savingScaleX(solution.saving)} y2={rateScaleY(r)} />
             <circle className={styles.currentPointAlt} cx={savingScaleX(solution.saving)} cy={rateScaleY(r)} r="2.35" />
             <circle className={styles.currentPoint} cx={savingScaleX(lowRiskSolution.saving)} cy={rateScaleY(r)} r="1.9" />
@@ -346,7 +351,7 @@ export default function UncertainSavingWidget() {
             </span>
             <span className={styles.legendItem}>
               <span className={styles.legendLine} style={{ background: '#93c5fd' }} />
-              低リスク
+              低いリスク
             </span>
           </div>
         </article>
@@ -356,26 +361,28 @@ export default function UncertainSavingWidget() {
         <p className={styles.summaryLead}>
           {borrowingConstraintBinds ? (
             <>
-              借入制約 <MathInline math="a \ge 0" /> が有効なので、最適点は境界 <MathInline math="a^*=0" /> にあります。無制約なら借り入れを選びたいので、
-              <MathInline math="u'(c_1) > \beta(1+r)E[u'(c_2(s))]" /> という期待 Euler 不等式（期待オイラー不等式）が成り立ちます。
+              借入制約 <MathInline math="a \ge 0" /> が有効なので、実際の選択は <MathInline math="a^*=0" /> です。
+              ただし無制約ならもっと小さい <MathInline math="a^u<0" /> を選びたいため、
+              境界では <MathInline math="u'(c_1) > \beta(1+r)E[u'(c_2(s))]" /> という不等号が現れます。
             </>
           ) : (
             <>
-              借入制約は緩んでおり、最適点は内部にあります。このときは <MathInline math="u'(c_1) = \beta(1+r)E[u'(c_2(s))]" /> という期待 Euler 方程式（期待オイラー方程式）の等号が成り立ちます。
+              借入制約は効いておらず、最適点では <MathInline math="u'(c_1) = \beta(1+r)E[u'(c_2(s))]" /> が成り立っています。
+              このときは通常の Euler 条件で家計の最適化を読めます。
             </>
           )}
         </p>
         <div className={`${styles.metricGrid} ${styles.metricGrid3}`}>
           <div className={styles.metricCard}>
-            <h4>現在の状態</h4>
+            <h4>現在の選択</h4>
             <dl>
-              <div><dt>最適貯蓄 <MathInline math="a^*" /></dt><dd>{formatNumber(solution.saving)}</dd></div>
-              <div><dt>無制約なら</dt><dd>{formatNumber(unconstrainedSolution.saving)}</dd></div>
+              <div><dt>実際の最適 <MathInline math="a^*" /></dt><dd>{formatNumber(solution.saving)}</dd></div>
+              <div><dt>無制約最適 <MathInline math="a^u" /></dt><dd>{formatNumber(unconstrainedSolution.saving)}</dd></div>
               <div><dt>制約の状態</dt><dd>{borrowingConstraintBinds ? 'binding（有効）' : isInterior ? 'slack（非有効）' : '境界だが等号に近い'}</dd></div>
             </dl>
           </div>
           <div className={styles.metricCard}>
-            <h4>KKT 条件（Karush-Kuhn-Tucker conditions）</h4>
+            <h4>KKT 条件</h4>
             <dl>
               <div><dt><MathInline math="u'(c_1)" /></dt><dd>{formatNumber(currentLhs)}</dd></div>
               <div><dt><MathInline math="\beta(1+r)E[u'(c_2)]" /></dt><dd>{formatNumber(currentRhs)}</dd></div>
@@ -394,12 +401,13 @@ export default function UncertainSavingWidget() {
         <p className={styles.note}>
           {borrowingConstraintBinds ? (
             <>
-              KKT 条件（Karush-Kuhn-Tucker conditions）の直感はシンプルです。無制約ならもっと左、つまり <MathInline math="a<0" /> に動きたいのに、今回はその方向が許されません。そのため最適点は境界 <MathInline math="a=0" /> に止まり、右へ少し動くと効用が下がるので、
-              <MathInline math="u'(c_1) > \beta(1+r)E[u'(c_2(s))]" /> という不等号が残ります。
+              KKT 条件では、借入制約が binding のとき補完スラックネスが働きます。
+              無制約なら <MathInline math="a<0" /> を選びたい家計でも、利用できる集合が
+              <MathInline math="a \ge 0" /> に限られているため、実際には境界の <MathInline math="a=0" /> にとどまります。
             </>
           ) : (
             <>
-              ここでは制約が緩んでいるので、家計は貯蓄を少し増やす方向にも減らす方向にも動けます。そのため最適点では限界条件がちょうど釣り合い、期待 Euler 方程式（期待オイラー方程式）の等号が成り立ちます。
+              内部解では借入制約は slack なので、ラグランジュ乗数は 0 になり、通常の Euler 条件だけで最適化を説明できます。
             </>
           )}
         </p>
