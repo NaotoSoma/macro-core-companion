@@ -1,19 +1,20 @@
 ---
-title: 講義ノート
-description: 各回の講義ページ一覧。
+title: 講義一覧
+description: 公開中の講義ページ一覧
 sidebar:
   label: 一覧
 ---
 
-このセクションでは、各回の講義ノートを順に公開します。各ページは「今日の問い」から入り、小さいモデル、interactive widget（対話型部品）、データ確認、一般化への橋渡しへ進む構成です。
+このセクションでは、公開している講義ノートを順に読めます。各ページは、小さいモデル、interactive widget（対話型部品）、データ確認を組み合わせながら、1つの中核メッセージに集中して学べる構成にしています。
 
-## 最初はここから
+## 最初はこちらから
 
 - [第1回 一般均衡とは何か](/macro-core-companion/lectures/01-general-equilibrium/)
 
-第1回では、マクロ経済学が個別市場の寄せ集めではなく、複数市場の同時整合性を考える学問であることを確認します。以後の回は、この見取り図のどこを詳しく掘るかという形で積み上げていきます。
+第1回では、マクロ経済学で「経済全体の整合性」を見るとはどういうことかを確認します。まずこのページを読むと、この companion website 全体の見取り図をつかみやすくなります。
 
-## 公開済み
+## 公開中
 
 - [第1回 一般均衡とは何か](/macro-core-companion/lectures/01-general-equilibrium/)
 - [第2回 家計の選択問題と曲線の導出](/macro-core-companion/lectures/02-household-choice/)
+- [第3回 企業の選択問題と価格設定](/macro-core-companion/lectures/03-firm-choice/)

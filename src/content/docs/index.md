@@ -1,6 +1,6 @@
 ---
 title: マクロ経済学研究
-description: 小さいモデルとインタラクティブ講義ノートで学ぶ大学院マクロ経済学。
+description: 小さいモデルと interactive widget を通じて大学院マクロを学ぶ companion website
 sidebar:
   label: ホーム
 ---
@@ -33,7 +33,14 @@ sidebar:
     </div>
   </div>
   <div class="home-list-row">
-    <div class="home-list-meta">案内</div>
+    <div class="home-list-meta">第3回</div>
+    <div class="home-list-main">
+      <span class="home-tag home-tag-blue">Lecture</span>
+      <a href="/macro-core-companion/lectures/03-firm-choice/">企業の選択問題と価格設定</a>
+    </div>
+  </div>
+  <div class="home-list-row">
+    <div class="home-list-meta">設計</div>
     <div class="home-list-main">
       <span class="home-tag home-tag-purple">Guide</span>
       <a href="/macro-core-companion/course-architecture/">コース設計の考え方</a>
@@ -43,7 +50,7 @@ sidebar:
     <div class="home-list-meta">一覧</div>
     <div class="home-list-main">
       <span class="home-tag home-tag-red">Index</span>
-      <a href="/macro-core-companion/lectures/">講義ノート一覧</a>
+      <a href="/macro-core-companion/lectures/">講義一覧</a>
     </div>
   </div>
 </div>

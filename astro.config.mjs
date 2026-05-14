@@ -31,7 +31,7 @@ export default defineConfig({
         },
         {
           label: '講義ノート',
-          items: ['lectures', 'lectures/01-general-equilibrium', 'lectures/02-household-choice'],
+          items: ['lectures', 'lectures/01-general-equilibrium', 'lectures/02-household-choice', 'lectures/03-firm-choice'],
         },
       ],
     }),
