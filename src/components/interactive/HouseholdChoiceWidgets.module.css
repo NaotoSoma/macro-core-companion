@@ -256,6 +256,11 @@
   opacity: 0.72;
 }
 
+.partialCurve {
+  stroke-dasharray: 3 2.2;
+  opacity: 0.58;
+}
+
 .constraintLine {
   stroke: color-mix(in srgb, var(--sl-color-text) 70%, var(--sl-color-bg));
   stroke-width: 1.8;
@@ -293,6 +298,8 @@
 
 .currentPoint,
 .currentPointAlt,
+.newPartialPoint,
+.newGeneralPoint,
 .unconstrainedPoint,
 .budgetEndpoint,
 .endowmentPoint {
@@ -307,6 +314,14 @@
 
 .currentPointAlt {
   fill: var(--household-blue);
+}
+
+.newPartialPoint {
+  fill: #fca5a5;
+}
+
+.newGeneralPoint {
+  fill: #dc2626;
 }
 
 .unconstrainedPoint {
@@ -378,6 +393,22 @@
 
 .secondarySwatch {
   background: var(--household-orange);
+}
+
+.dashedPrimarySwatch {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--household-blue) 0 0.28rem,
+    transparent 0.28rem 0.46rem
+  );
+}
+
+.dashedSecondarySwatch {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--household-orange) 0 0.28rem,
+    transparent 0.28rem 0.46rem
+  );
 }
 
 .tertiarySwatch {

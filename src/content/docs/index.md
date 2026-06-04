@@ -40,6 +40,13 @@ sidebar:
     </div>
   </div>
   <div class="home-list-row">
+    <div class="home-list-meta">第4回</div>
+    <div class="home-list-main">
+      <span class="home-tag home-tag-green">Lecture</span>
+      <a href="/macro-core-companion/lectures/04-static-general-equilibrium/">代表的家計・代表的企業の静学的一般均衡</a>
+    </div>
+  </div>
+  <div class="home-list-row">
     <div class="home-list-meta">設計</div>
     <div class="home-list-main">
       <span class="home-tag home-tag-purple">Guide</span>
