@@ -160,6 +160,17 @@ body {
   color: var(--ynu-blue-deep);
 }
 
+.sl-markdown-content .katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.2rem 0;
+}
+
+.sl-markdown-content .katex-display > .katex {
+  white-space: nowrap;
+}
+
 .home-pills {
   display: flex;
   flex-wrap: wrap;

@@ -37,6 +37,7 @@ export default defineConfig({
             'lectures/02-household-choice',
             'lectures/03-firm-choice',
             'lectures/04-static-general-equilibrium',
+            'lectures/05-two-period-rbc',
           ],
         },
       ],

@@ -47,6 +47,13 @@ sidebar:
     </div>
   </div>
   <div class="home-list-row">
+    <div class="home-list-meta">第5回</div>
+    <div class="home-list-main">
+      <span class="home-tag home-tag-blue">Lecture</span>
+      <a href="/macro-core-companion/lectures/05-two-period-rbc/">2期間RBCモデルと景気循環の基本事実</a>
+    </div>
+  </div>
+  <div class="home-list-row">
     <div class="home-list-meta">設計</div>
     <div class="home-list-main">
       <span class="home-tag home-tag-purple">Guide</span>

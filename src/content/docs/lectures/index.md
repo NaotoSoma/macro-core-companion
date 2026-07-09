@@ -19,3 +19,4 @@ sidebar:
 - [第2回 家計の選択問題と曲線の導出](/macro-core-companion/lectures/02-household-choice/)
 - [第3回 企業の選択問題と価格設定](/macro-core-companion/lectures/03-firm-choice/)
 - [第4回 代表的家計・代表的企業の静学的一般均衡](/macro-core-companion/lectures/04-static-general-equilibrium/)
+- [第5回 2期間RBCモデルと景気循環の基本事実](/macro-core-companion/lectures/05-two-period-rbc/)
