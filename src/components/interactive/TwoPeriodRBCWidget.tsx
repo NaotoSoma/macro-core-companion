@@ -164,7 +164,21 @@ export default function TwoPeriodRBCWidget() {
   const responses = useMemo(() => responseItems(solution, baseline), [solution, baseline]);
   const showShockComparison = Math.abs(a1 - 1.0) > 0.015;
 
-  const resourceMax = Math.max(solution.y1, solution.c1, solution.i1, 0.1) * 1.16;
+  const resourceMax = Math.max(
+    solution.y1,
+    solution.c1,
+    solution.i1,
+    baseline.y1,
+    baseline.c1,
+    baseline.i1,
+    lowShockReference.y1,
+    lowShockReference.c1,
+    lowShockReference.i1,
+    highShockReference.y1,
+    highShockReference.c1,
+    highShockReference.i1,
+    0.1,
+  ) * 1.16;
   const resourceY = makeScale(0, resourceMax, plot.height - plot.marginBottom, plot.marginTop);
 
   const laborGrid = useMemo(() => {
